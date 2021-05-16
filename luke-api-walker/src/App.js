@@ -6,6 +6,8 @@ import fetchItems from './actions/fetchItems';
 import Submit from './components/Submit';
 import Results from './components/Results';
 import NotFound from './components/NotFound';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 function App() {
   const [stateResults, setStateResults] = useState({
@@ -54,6 +56,13 @@ function App() {
         <Input/>
         <Submit/>
         { isFound ? <Results {...stateResults}/> : <NotFound/>}
+        <Router>
+          <Switch>
+            <Route path=":id">
+              <Results/>
+            </Route>
+          </Switch>
+        </Router>
         {/* todos los objetos restantes */}
       </form>
         
